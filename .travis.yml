@@ -1,0 +1,8 @@
+language: c
+compiler:
+ - gcc
+ - clang
+before_install:
+ - sudo apt-get -qq update
+ - sudo apt-get -qq build-dep squid
+script: ./bootstrap.sh && ./configure --enable-tests && make -j24 && make -j24 check && make -j24 distcheck && sudo make install
